@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Hex Game Board</h1>
+  <div class="d-flex justify-content-center">
+      <p>
+          Player white = blue<br>
+          Player black = red
+      </p>
+  </div>
+  <div class="d-flex justify-content-center">
+    <svg class="hex-board" viewBox="-20 -50 650 450" xmlns="http://www.w3.org/2000/svg">
+      {% for row in range(7) %}
+        {% for col in range(7) %}
+          {% set x = col * 60 + 30 * row %}
+          {% set y = row * 45 %}
+          {% set cell = board[row][col] %}
+          {% if cell == 1 %}
+            {% set fill_color = 'blue' %}
+          {% elif cell == -1 %}
+            {% set fill_color = 'red' %}
+          {% else %}
+            {% set fill_color = 'white' %}
+          {% endif %}
+          <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" transform="translate({{ x }},{{ y }})" stroke="black" fill="{{ fill_color }}" class="hexagon" />
+        {% endfor %}
+      {% endfor %}
+    </svg>
+  </div>
+
+  <style>
+    .hex-board {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      display: block;
+      margin-top: 20px;
+    }
+  </style>
+{% endblock %}

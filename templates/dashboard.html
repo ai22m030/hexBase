@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="text-center mt-5">Dashboard</h1>
+    <p class="lead text-center mt-4">Welcome to the Hex Game Dashboard. Here you can manage your gameplays, train your AI, and control agents.</p>
+
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Gameplays</h5>
+            <p class="card-text">You currently have {{ gameplay_count }} gameplays. Manage gameplays, view, and prepare for training. Generate new gameplays and add to the database.</p>
+            <a href="{{ url_for('gameplays') }}" class="btn btn-primary">Manage Gameplays</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Train AI</h5>
+            <p class="card-text">Your CNN has been trained on {{ training_sessions }} sessions. Train your Convolutional Neural Network (CNN) with the latest gameplays to improve its performance.</p>
+            <a href="{{ url_for('train_cnn') }}" class="btn btn-primary">Train CNN</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Agent Management</h5>
+            <p class="card-text">Control your AI agents, monitor their performance, and start games against other agents or human players.</p>
+            <a href="{{ url_for('agent_control') }}" class="btn btn-primary">Control Agents</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
