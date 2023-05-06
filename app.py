@@ -34,16 +34,42 @@ def train_cnn():
     return "Train CNN page"
 
 
-@app.route('/hex_board')
+@app.route('/board')
 def hex_board():
     # Add your training logic here
-    return "hex_board"
+    return render_template('board.html', board=board_data)
 
 
 @app.route('/agent_control')
 def agent_control():
     # Add your agent control logic here
     return "Agent Control page"
+
+
+@app.route('/manage_gameplays')
+def manage_gameplays():
+    # Add your manage gameplays logic here
+    return "Manage gameplays page"
+
+@app.route('/generate_gameplays')
+def generate_gameplays():
+    # Add your generate gameplays logic here
+    return "Generate gameplays page"
+
+@app.route('/preview_gameplays')
+def preview_gameplays():
+    # Add your preview gameplays logic here
+    return "Preview gameplays page"
+
+@app.route('/load_gameplays')
+def load_gameplays():
+    # Add your load gameplays logic here
+    return "Load gameplays page"
+
+@app.route('/save_gameplays')
+def save_gameplays():
+    # Add your save gameplays logic here
+    return "Save gameplays page"
 
 
 if __name__ == '__main__':

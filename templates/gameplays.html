@@ -1,40 +1,54 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-  <h1>Hex Game Board</h1>
-  <div class="d-flex justify-content-center">
-      <p>
-          Player white = blue<br>
-          Player black = red
-      </p>
-  </div>
-  <div class="d-flex justify-content-center">
-    <svg class="hex-board" viewBox="-20 -50 650 450" xmlns="http://www.w3.org/2000/svg">
-      {% for row in range(7) %}
-        {% for col in range(7) %}
-          {% set x = col * 60 + 30 * row %}
-          {% set y = row * 45 %}
-          {% set cell = board[row][col] %}
-          {% if cell == 1 %}
-            {% set fill_color = 'blue' %}
-          {% elif cell == -1 %}
-            {% set fill_color = 'red' %}
-          {% else %}
-            {% set fill_color = 'white' %}
-          {% endif %}
-          <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" transform="translate({{ x }},{{ y }})" stroke="black" fill="{{ fill_color }}" class="hexagon" />
-        {% endfor %}
-      {% endfor %}
-    </svg>
-  </div>
+<style>
+  .page-wrapper {
+    display: flex;
+    min-height: calc(100vh - 56px - 112px);
+  }
 
-  <style>
-    .hex-board {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      display: block;
-      margin-top: 20px;
-    }
-  </style>
+  .sidebar {
+    width: 200px;
+    background-color: #343a40;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px - 112px);
+  }
+
+  .sidebar .nav-link {
+    color: #adb5bd;
+    cursor: pointer;
+  }
+
+  .sidebar .nav-link:hover {
+    background-color: #495057;
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 200px;
+  }
+</style>
+
+<div class="page-wrapper">
+  <div class="sidebar">
+    <nav class="nav flex-column">
+      <a class="nav-link" href="#">Manage</a>
+      <a class="nav-link" href="#">Generate</a>
+      <a class="nav-link" href="#">Preview</a>
+      <a class="nav-link" href="#">Load</a>
+      <a class="nav-link" href="#">Save</a>
+    </nav>
+  </div>
+  <div class="main-content">
+    <h1>Gameplays</h1>
+    <p>Gameplay content goes here.</p>
+  </div>
+</div>
 {% endblock %}
